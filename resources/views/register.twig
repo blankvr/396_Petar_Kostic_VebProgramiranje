@@ -1,0 +1,39 @@
+{% extends "components/header.twig" %}
+{% block header %}
+    {{parent()}}
+{% endblock %}
+{% block body %}
+<div class="reg">
+    <form action="/registration" method="POST">
+        {{ csrf_field() }}
+
+        <input value="{{ old('name') }}" type="text" placeholder="Insert your name" name="name"><br>
+        <p>{{ errors.first('name') }}</p>
+
+        <input value="{{ old('surname') }}" type="text" placeholder="Insert your surname" name="surname"><br>
+        <p>{{ errors.first('surname') }}</p>
+
+        <label>Male<input type="radio" name="gender" value="m"></label>
+        <label>Female<input type="radio" name="gender" value="f"></label>
+        <label>Other<input type="radio" name="gender" value="o" checked></label><br>
+        <input value="{{ old('dob') }}" type="date" name="dob"><br>
+        <p>{{ errors.first('dob') }}</p>
+
+        <input value="{{ old('email') }}" type="text" placeholder="Insert your email" name="email"><br>
+        <p>{{ errors.first('email') }}</p>
+
+        <input value="{{ old('username') }}" type="text" placeholder="Insert your username" name="username"><br>
+        <p>{{ errors.first('username') }}</p>
+
+        <input value="{{ old('password') }}" type="password" placeholder="Insert your password" name="password"><br>
+        <p>{{ errors.first('password') }}</p>
+
+        <input type="password" placeholder="Retype your password" name="password_confirmation"><br>
+        <p>{{ errors.first('password_confirmation') }}</p>
+
+        <button type="submit">Register</button>
+    </form>
+</div>
+</body>
+</html>
+{% endblock %}

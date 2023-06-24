@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: gray;
+}
+.meni {
+    background-color: rgb(95, 95, 194);
+    
+    
+}
+.meni li{
+    display: inline-flex;
+    margin-right: 20px;
+    
+
+}
+
+.meni a{
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    
+}
+.meni ul li a:hover{
+    background-color: rgb(55, 55, 102);
+    
+    
+}
+.logout{
+    float: right;
+}
+.logout ul{
+    list-style: none;
+}
+.reg{
+    display: block;
+    text-align: center;
+    margin-top: 30px;  
+}
+.reg input{
+    margin-top: 20px;
+    font-size: 20px;
+}
+.reg button{
+    margin-top: 20px;
+    font-size: 30px;
+    background-color: bisque;
+}
+.reg p{
+    
+    color: rgb(91, 6, 6);
+    
+}

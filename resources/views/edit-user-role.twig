@@ -1,0 +1,11 @@
+<a href="/manage-users">Back</a>
+
+<p>Editing role for user: {{user.username}}</p><br><br>
+
+<form method="post" action="/edit-user-role/{{user.id}}/edit">
+{{csrf_field()}}
+    <label>User <input type="radio" name="role" value="user" {% if user.role is same as "user" %}checked{% endif %}></label>
+    <label>Moderator <input type="radio" name="role" value="moderator" {% if user.role is same as "moderator" %}checked{% endif %}></label>
+    <label>Admin <input type="radio" name="role" value="admin" {% if user.role is same as "admin" %}checked{% endif %}></label>
+    <button type="submit">Edit role</button>
+</from>

@@ -1,0 +1,34 @@
+<div>
+    <table>
+    {% if auth_user()['role'] is same as 'moderator' %}
+        <a href="/">Back to home page</a>
+    {% else %}
+        <a href="admin-page">Back</a>
+    {% endif %}
+    <p>List of posts:</p>
+        <tr>
+            <th>Post title</th>
+            <th>Post author</th>
+            <th>Date when posted</th>
+        </tr>
+        {% for post in posts %}
+            <tr>
+                <th><a href="/post/{{post.id}}">{{post.title}}</a></th>
+                <td>Posted by <a href="profile/{{post.user.username}}">{{post.user.username}}</td>
+                <td>On {{post.created_at.format('j/n/Y')}}</td>
+                <td><form method="post" action="/edit-post/{{post.id}}">
+                        {{csrf_field()}}
+                            <button id="edit">Edit post</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="/delete-post/{{post.id}}">
+                        {{csrf_field()}}
+                        <button id="delete">Delete post</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        
+    </table>
+</div>

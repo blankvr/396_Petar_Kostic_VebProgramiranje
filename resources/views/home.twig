@@ -1,0 +1,28 @@
+{% extends "components/header_user.twig" %}
+{% block header %}
+    {{parent()}}
+{% endblock %}
+{% block body %}
+{% if posts is empty %}
+    <h1 style="background-color: rgb(148, 146, 146); height: 10%;">There are no posts on this website.</h1>
+{% else %}
+    <h1 style="background-color: rgb(148, 146, 146);">User posts:</h1>
+    <div class="post-list">
+        {% for post in posts %}
+        <ul>
+            <li>
+                <a href="/post/{{post.id}}">
+                <strong>{{post.title}}</strong> <small>by {{post.user.username}}, posted on {{post.created_at.format('j/n/Y')}}<small>
+                </a><br>
+            </li>
+        </ul>
+        {% endfor %}
+    </div>
+    <div class="paginator">
+        {{posts.links()}}
+    </div>
+    
+{% endif %}
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,41 @@
+<div>
+    <table>
+    <a href="/admin-page">Back</a>
+    <p>List of users:</p>
+        <tr>
+            <th>ID</th>
+            <th>Name and Surname</th>
+            <th>Username</th>
+            <th>Gender</th>
+            <th>Date of birth</th>
+            <th>Email</th>
+            <th>Role</th>
+        </tr>
+        {% for user in users %}
+            <tr>
+                <th>{{user.id}}</th>
+                <td>{{user.name}} {{user.surname}}</td>
+                <td><a href="profile/{{user.username}}">{{user.username}}</td>
+                <td>{{user.gender}}</td>
+                <td>{{user.dob}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.role}}</td>
+                
+            {% if user.role != "admin" %}
+                <td><form method="post" action="/edit-user-role/{{user.id}}">
+                        {{csrf_field()}}
+                            <button id="edit">Edit user role</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="/delete-user/{{user.id}}">
+                        {{csrf_field()}}
+                        <button id="delete">Delete user</button>
+                    </form>
+                </td>
+            {% endif %}
+            </tr>
+        {% endfor %}
+        
+    </table>
+</div>

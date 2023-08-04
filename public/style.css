@@ -38,7 +38,7 @@ body{
 .reg{
     display: block;
     text-align: center;
-    margin-top: 30px;  
+    margin-top: 30px; 
 }
 .reg input{
     margin-top: 20px;
@@ -49,8 +49,252 @@ body{
     font-size: 30px;
     background-color: bisque;
 }
+.reg button:hover{
+    background-color: rgb(147, 132, 112);
+}
 .reg p{
-    
     color: rgb(91, 6, 6);
+}
+
+.single-post{
+    margin-left: 70px;
+    margin-right: 70px;
+    margin-bottom: 25px;
+    margin-top: 25px;
+    background-color: rgb(211, 205, 196);
+}
+.single-post p{
+    margin-left: 20px;
+}
+#post-details{
+    font-size: 20px;
+    color: rgb(67, 65, 65);
+}
+#singlePost-title{
+    font-size: 60px;
+}
+.single-post #post-body{
+    margin-top: 20px;
+}
+.single-post #post-body p{
+    font-size: 30px;
+}
+.create-post{
+    display: block;
+    text-align: center;
+    margin-top: 50px;
     
 }
+.create-post input{
+    background-color: rgb(211, 205, 196);
+}
+.create-post textarea{
+    background-color: rgb(211, 205, 196);
+}
+.create-post #title{
+    font-size: 35px;
+    width: 1000px;
+    margin-bottom: 20px;
+}
+.create-post #body{
+    width: 1000px;
+    height: 60%;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.create-post button{
+    margin-top: 20px;
+    font-size: 30px;
+    background-color: bisque;
+}
+.create-post button:hover{
+    background-color: rgb(147, 132, 112);
+}
+.special-action{
+    margin-left: 70px;
+    float: left;
+    display: inline-flex;
+}
+.special-action button{
+    font-size: 20px;
+    width: 200px;
+}
+.special-action #delete{
+    background-color: rgb(185, 2, 2);
+    color: white;
+}
+.special-action #delete:hover{
+    background-color: rgb(104, 41, 41);
+}
+.special-action #edit:hover{
+    background-color: rgb(194, 194, 194);
+}
+.profile{
+    margin-bottom: 30px;
+    margin-right: 50px;
+
+    float: left;
+    display: inline-flex;
+    position: relative;
+}
+.profile th, td{
+    background-color: white;
+    font-size: 40px;
+    border: 1px solid black;
+}
+.profile #tableAdmin{
+    background-color: rgb(185, 2, 2);
+    color: white;
+}
+.profile #tableModerator{
+    background-color: rgb(75, 75, 239);
+    color: white;
+}
+.post-list{
+    background-color: rgb(148, 146, 146);
+    width: 100%;
+    clear: left;
+}
+.post-list a{
+    border-style: solid;
+    border-color: black;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    text-decoration: none;
+    font-size: 35px;
+    margin-left: 20px;
+}
+.post-list ul{
+    list-style: none;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+.post-list ul li{
+    margin-bottom: 20px;
+}
+.post-list a:hover{
+    background-color: rgb(194, 194, 194);
+}
+.profile #followButton, #unfollowButton{
+    margin-top: 166px
+}
+.profile #followButton button{
+    font-size: 30px;
+    width: 200px;
+    background-color: rgb(3, 255, 24);
+    color: white;
+}
+.profile #unfollowButton button{
+    font-size: 30px;
+    width: 200px;
+    background-color: rgb(185, 2, 2);
+    color: white;
+}
+.profile #followButton button:hover{
+    background-color: rgb(4, 202, 20);
+}
+.profile #unfollowButton button:hover{
+    background-color: rgb(104, 41, 41);
+}
+.followers{
+    clear: left;
+    margin-top: 20px;
+}
+.followers ul{
+    list-style: none;
+}
+.followers ul li{
+    float: left;
+    display: inline-flex;
+    margin-right: 15px;
+}
+.followers ul li a{
+    text-decoration: none;
+    font-size: 23px;
+    color: white;
+    border-style: solid;
+    border-color: black;
+    border-radius: 1px;
+    background-color: rgb(92, 92, 92);
+}
+.follower-list{
+    margin-top: 15px;
+    background-color: rgb(148, 146, 146);
+}
+.follower-list table{
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    margin-left: 20px; 
+}
+.follower-list table tr{
+    margin-bottom: 10px;
+}
+.follower-list table th{
+    border-style: solid;
+    border-radius: 1px;
+    font-size: 40px;
+    background-color: white;
+    padding: 5px
+}
+.follower-list table th:hover{
+    background-color: rgb(167, 166, 166);
+}
+.follower-list table th a{
+    text-decoration: none;
+    color: black;
+}
+.paginator{
+    margin-top: 10px;
+    
+}
+.paginator ul li{
+    margin-bottom: 10px;
+    display: inline-flex;
+    float: left;
+
+}
+.paginator a{
+    border-style: solid;
+    border-color: black;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    text-decoration: none;
+    font-size: 35px;
+    margin-left: 20px;
+}
+.paginator a:hover{
+    background-color: rgb(194, 194, 194);
+}
+.adminSettings {
+    margin-left: 20px;
+    padding: 10px; 
+    margin-bottom: 10px;
+    width: 100%;
+}
+.adminSettings tr td{
+    margin-left: 50px;
+}
+.adminSettings table  th, td{
+    border: 1px solid;
+}
+.Page{
+    position: relative;
+}
+.deleteProfile{
+    display: flex;
+    position: absolute;
+    left: 47%;
+    bottom: 0;
+    margin-bottom: 60px;
+}
+.deleteProfile a{
+    font-size: 20px;
+    background-color: rgb(185, 2, 2);
+    color: white;
+    text-decoration: none;
+}
+.deleteProfile a:hover{
+    background-color: rgb(104, 41, 41);
+    
+}
+

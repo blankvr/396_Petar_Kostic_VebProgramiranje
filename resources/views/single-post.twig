@@ -1,0 +1,32 @@
+{% extends "components/header_user.twig" %}
+{% block header %}
+    {{parent()}}
+{% endblock %}
+{% block body %}
+<div class="single-post">
+    <p id="singlePost-title">{{post.title}}</p>
+    <p id="post-details">Posted by <strong><a href="/profile/{{post.user.username}}">{{post.user.username}}</a></strong> on {{post.created_at.format('j/n/Y')}}</p>
+    <div id="post-body">
+        <p>{{post.body}}</p>
+    </div>
+</div>
+<div class="special-action">
+    
+    {% if (auth_user()['id'] is same as (post.users_id)) or (auth_user()['role'] != 'user') %}
+
+        <form method="post" action="/edit-post/{{post.id}}">
+            {{csrf_field()}}
+            <button id="edit">Edit post</button>
+        </form>
+            
+        <form method="post" action="/post/{{post.id}}">
+            {{csrf_field()}}
+            <button id="delete">Delete post</button>
+        </form>
+        
+    {% endif %}
+</div>
+
+</body>
+</html>
+{% endblock %}

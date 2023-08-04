@@ -1,13 +1,16 @@
-{% extends "components/header.twig" %}
+{% extends "components/header_guest.twig" %}
 {% block header %}
     {{parent()}}
 {% endblock %}
 {% block body %}
 <body>
-    <div class="reg">
-    <form action="login.php" method="POST">
-        <input type="text" placeholder="Username" name="username"><br>
-        <input type="password" placeholder="Password" name="password"><br>
+<div class="reg">
+    <form action="/login" method="POST">
+        {{ csrf_field() }}
+        <input type="text" placeholder="Username" name="loginusername"><br>
+        
+        <input type="password" placeholder="Password" name="loginpassword"><br>
+        
         <button type="submit">Log in</button>
     </form>
 </div>

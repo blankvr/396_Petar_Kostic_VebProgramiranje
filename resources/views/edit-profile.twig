@@ -1,0 +1,48 @@
+{% extends "components/header_user.twig" %}
+{% block header %}
+    {{parent()}}
+{% endblock %}
+{% block body %}
+<div class="Page">
+    <div class="reg">
+        
+        <form action="/edit-profile/{{auth_user()['id']}}/edit" method="POST">
+            {{ csrf_field() }}
+            
+            <input value="{{ old('name', user.name) }}" type="text" placeholder="Insert your name" name="name"><br>
+            <p>{{ errors.first('name') }}</p>
+
+            <input value="{{ old('surname', user.surname) }}" type="text" placeholder="Insert your surname" name="surname"><br>
+            <p>{{ errors.first('surname') }}</p>
+
+            <label>Male<input type="radio" name="gender" value="Male" {% if user.gender is same as "Male" %}checked{% endif %}></label>
+            <label>Female<input type="radio" name="gender" value="Female" {% if user.gender is same as "Female" %}checked{% endif %}></label>
+            <label>Other<input type="radio" name="gender" value="Other" {% if user.gender is same as "Other" %}checked{% endif %}></label><br>
+            <input value="{{ old('dob', user.dob) }}" type="date" name="dob"><br>
+            <p>{{ errors.first('dob') }}</p>
+
+            <input value="{{ old('email', user.email) }}" type="text" placeholder="Insert your email" name="email"><br>
+            <p>{{ errors.first('email') }}</p>
+
+            <input value="{{ old('username', user.username) }}" type="text" placeholder="Insert your username" name="username"><br>
+            <p>{{ errors.first('username') }}</p>
+
+            <input value="{{ old('password') }}" type="password" placeholder="Insert your password" name="password"><br>
+            <p>{{ errors.first('password') }}</p>
+
+            <input type="password" placeholder="Retype your password" name="password_confirmation"><br>
+            <p>{{ errors.first('password_confirmation') }}</p>
+
+            <button type="submit">Edit profile information</button>
+        </form>
+    </div>
+</div>
+</body>
+<footer>
+    <div class="deleteProfile">
+        <a href="/delete-profile/{{user.id}}">Delete profile</a>
+    </div>
+</footer>
+
+</html>
+{% endblock %}

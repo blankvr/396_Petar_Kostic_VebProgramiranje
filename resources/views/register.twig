@@ -1,21 +1,22 @@
-{% extends "components/header.twig" %}
+{% extends "components/header_guest.twig" %}
 {% block header %}
     {{parent()}}
 {% endblock %}
 {% block body %}
 <div class="reg">
-    <form action="/registration" method="POST">
+    <form action="/register" method="POST">
         {{ csrf_field() }}
-
+        
         <input value="{{ old('name') }}" type="text" placeholder="Insert your name" name="name"><br>
         <p>{{ errors.first('name') }}</p>
 
         <input value="{{ old('surname') }}" type="text" placeholder="Insert your surname" name="surname"><br>
         <p>{{ errors.first('surname') }}</p>
 
-        <label>Male<input type="radio" name="gender" value="m"></label>
-        <label>Female<input type="radio" name="gender" value="f"></label>
-        <label>Other<input type="radio" name="gender" value="o" checked></label><br>
+        <label>Male<input type="radio" name="gender" value="Male" {% if old('gender') is same as "Male" %}checked{% endif %}></label>
+        <label>Female<input type="radio" name="gender" value="Female" {% if old('gender') is same as "Female" %}checked{% endif %}></label>
+        <label>Other<input type="radio" name="gender" value="Other"  {% if old('gender') is same as "Other" %}checked{% endif %}></label><br>
+        <p>{{ errors.first('gender') }}</p>
         <input value="{{ old('dob') }}" type="date" name="dob"><br>
         <p>{{ errors.first('dob') }}</p>
 

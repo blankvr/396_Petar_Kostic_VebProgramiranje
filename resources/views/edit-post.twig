@@ -1,0 +1,22 @@
+{% extends "components/header_user.twig" %}
+{% block header %}
+    {{parent()}}
+{% endblock %}
+{% block body %}
+<div class="create-post">
+  <form action="/edit-post/{{post.id}}/edit" method="POST">
+    {{ csrf_field() }}
+    <input id="title" value="{{old('title', post.title)}}" name="title"  type="text" autocomplete="off"/>
+    <p>{{ errors.first('title') }}</p>
+    <textarea id="body" name="body"  type="text">{{old('body', post.body)}}</textarea>
+    <p>{{ errors.first('body') }}</p>
+    <button>Edit Post</button>
+
+  </form>
+</div>
+            
+
+
+</body>
+</html>
+{% endblock %}

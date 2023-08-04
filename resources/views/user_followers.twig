@@ -1,0 +1,18 @@
+{% extends "components/header_user.twig" %}
+{% block header %}
+    {{parent()}}
+{% endblock %}
+{% block body %}
+
+<div class="follower-list">
+    <table>
+        {% for  follow in followers %}
+            <tr>      
+                <th>   
+                    <a href="/profile/{{follow.user_following.username}}">{{follow.user_following.username}}</a>
+                </th>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

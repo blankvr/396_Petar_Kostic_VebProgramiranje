@@ -1,0 +1,133 @@
+{% block header %} 
+    {% if auth_user()['id'] %}
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+            <link rel="stylesheet" href="../style.css">
+        </head>
+        <body>
+            <div class="meni">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/my-feed/{{auth_user()['username']}}">My Feed</a></li>
+                    <li><a href="/create-post">Create new post</a></li>
+                    <li><a href="/profile/{{auth_user()['username']}}">My Profile</a></li>
+                    <li class="logout"><a href="/logout">Logout</a></li>
+                </ul>
+            </div>
+    
+
+{% else %}
+
+    
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+            <link rel="stylesheet" href="../style.css">
+        </head>
+        <body>
+            <div class="meni">
+                <ul>
+                    <li><a href="/">Register</a></li>
+                    <li><a href="/login">Log in</a></li>
+                </ul>
+            </div>
+    
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+<div class="profile">
+    <table>
+        <tr>
+            <th>Name</th>
+            <td>{{name}} {{surname}}</td>
+        </tr>
+        <tr>
+            <th>Username</th>
+            <td>{{username}}</td>
+        </tr>
+        <tr>
+            <th>Date of birth</th>
+            <td>{{dob}}</td>
+        </tr>
+        <tr>
+            <th>Gender</th>
+            <td>{{ gender }}</td>
+        </tr>
+        {% if role is same as ('admin')%}
+        <tr>
+            <th id="tableAdmin">Admin</th>
+        </tr>
+        {% endif %}
+        {% if role is same as ('moderator')%}
+        <tr>
+            <th id="tableModerator">Moderator</th>
+        </tr>
+        {% endif %}
+    </table>
+
+{% if auth_user()['id'] %}
+    {% if (username != (auth_user()['username'])) and not currentlyFollowing %}
+        <div id="followButton">
+            <form action="/create-follow/{{username}}" method="post">
+                {{ csrf_field() }}
+                <button>Follow</button>
+            </form>
+        </div>
+    {% endif %}
+    
+    {% if (username != (auth_user()['username'])) and currentlyFollowing %}
+        <div id="unfollowButton">
+            <form action="/remove-follow/{{username}}" method="post">
+                {{ csrf_field() }}
+                <button>Unfollow</button>
+            </form>
+        </div>
+    {% endif %}
+{% endif %}
+</div>
+<div style="float: right; display: block; padding: 15px; font-size: 20px;">
+{% if username is same as auth_user()['username'] %}
+    <a style="color:rgb(34, 34, 151); margin-right: 10px" href="/edit-profile/{{auth_user()['id']}}">
+        Edit profile
+    </a>
+{% endif %}
+{% if auth_user()['role'] is same as ('moderator') and auth_user()['username'] is same as username %}
+    <a href="/manage-posts">Moderator tools</a>
+{% endif %}
+{% if auth_user()['role'] is same as ('admin') and auth_user()['username'] is same as username %}
+    <a href="/admin-page">Administrator tools</a>
+{% endif %}
+</div>
+<div class="followers">
+    <ul>
+        <li><a href="/user_followers/{{username}}">Followers: {{followers}}</a></li>
+        <li><a href="/user_following/{{username}}">Following: {{following}}</a></li>
+    </ul>
+
+</div>
+
+
+<div class="post-list">
+    {% for post in posts %}
+    <ul>
+        <li>
+            <a href="/post/{{post.id}}">
+            <strong>{{post.title}}</strong>, <small>posted on {{post.created_at.format('j/n/Y')}}</small>
+            </a><br>
+        </li>
+    </ul>
+    {% endfor %}
+</div>
+<div class="paginator">
+    {{posts.links()}}
+</div>
+
+</body>
+</html>
+{% endblock %}

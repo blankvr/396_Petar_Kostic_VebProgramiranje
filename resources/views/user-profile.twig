@@ -93,15 +93,15 @@
 </div>
 <div style="float: right; display: block; padding: 15px; font-size: 20px;">
 {% if username is same as auth_user()['username'] %}
-    <a style="color:rgb(34, 34, 151); margin-right: 10px" href="/edit-profile/{{auth_user()['id']}}">
+    <a style="color: white; text-decoration: none; margin-right: 10px;background-color: rgb(92, 92, 92);" href="/edit-profile/{{auth_user()['id']}}">
         Edit profile
     </a>
 {% endif %}
 {% if auth_user()['role'] is same as ('moderator') and auth_user()['username'] is same as username %}
-    <a href="/manage-posts">Moderator tools</a>
+    <a style="color: white; text-decoration: none; background-color: rgb(92, 92, 92);" href="/manage-posts">Moderator tools</a>
 {% endif %}
 {% if auth_user()['role'] is same as ('admin') and auth_user()['username'] is same as username %}
-    <a href="/admin-page">Administrator tools</a>
+    <a style="color: white; text-decoration: none; background-color: rgb(92, 92, 92);" href="/admin-page">Administrator tools</a>
 {% endif %}
 </div>
 <div class="followers">
